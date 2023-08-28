@@ -1,0 +1,83 @@
+DDD (Domain Driven Design - Design Orientado a Domínio) é uma abordagem para desenvolvimento de sistemas de software complexos que tem foco no que está acontecendo no domínio da aplicação.
+
+Em uma equipe de desenvolvimento o foco é solucionar o problema independente do cenário, de maneira que fique coerente e "fale a língua do negócio". O DDD nos ajuda a adequar nossa arquitetura ao negócio, a criar SOLUÇÕES (não softwares - código própriamente dito), inclusive devemos tomar cuidado em não dificultarmos demais essas soluções para que posteriormente dificulte a implementação do código (big design of front).
+
+Para isso devemos mudar a mentalidade que era muito comum antigamente de sair programando sem desenhar uma estratégia condizente e eficaz com o negócio do cliente, ou até mesmo aquelas documentações gigantescas em que tudo é definido sem nem sequer escrever uma linha de código (método cascata).
+
+Antes era muito comum o "cliente" pedir um sistema e conforme as necessidades fossem sendo faladas o código ja fosse sendo escrito porém essa abordagem ja está ultrapassada, assim como a metodologia cascata também está. Isso não significa que não possa funcionar, porém ao implementarmos uma expansão provavelmente teremos problemas...
+
+Ao nos contratar, a empresa deseja que, apesar de sermos desenvolvedores, entendamos sua situação, seu ambiente, e nos adequemos a ele construindo assim uma solução útil e condizende com o domínio.
+
+Com a abordagem antiga temos problemas como: 
+-falta de clareza nos objetivos (com quem eu falo dentro dessa empresa? exemplo de uma escola: se eu falar com o professor ele tem uma visão, se eu falar com o coordenador ele tem outra, com o aluno outra e por ai vai);
+-scope creep (o escopo que não para de sofrer alterações); 
+-expectativas irreais ("ah isso é facil vc faz em 5 minutos"); 
+-recursos limitado; 
+-falha na comunicação; 
+-atraso nas entregas;
+-falta de transparência.
+
+Devemos implementar conceitos de engenharia de software e utilizar Design Estratégico (PORQUE e O QUE) - arquitetar primeiro as ideias e somente depois desenvolver* (de maneira clara, não desenvolvemos para nós e sim para a próxima pessoa que terá contato com o código).
+*não entender esse "somente depois" como método cascata.
+
+Mas afinal, o que é o domínio? É o coração do negócio, é o negócio em si, aquilo que a empresa faz, o motivo da empresa existir
+
+Qual é o domínio da escola - é a educação de crianças e adolescentes por meio de ensino de conteúdos e desenvolvimento de habilidades que possam ser levados e utilizados por toda vida, de forma simples o domínio é a educação
+
+O domíno é dividido:
+
+-Subdomínio Principal: são  os negócios que  o  diferenciam dos  outros  no mercado, o negócio em si, aquilo que a empresa faz. 
+Podemos citar aqui alguns exemplos, tais como:
+	•O Subdomínio Principal da nossa Escola são as Aulas e Metodologias.
+	•O Subdomínio Principal da Netflix são os vídeos.
+	•O Subdomínio Principal da Azul são os voos.
+	•O Subdomínio Principal da DHL são seus serviços logísticos
+
+uma empresa pode ter mais de um subdomínio principal, seja por entregar mais de uma coisa ou por terem uma parte tão importante dentro do processo que acaba sendo um outro subdomínio principal. Por exemplo, a netflix tem um subdomínio de entregar conteúdo por meio de filmes e séries, para o consumidor não interessa como isso é feito porém a parte de conexão do streaming pode ser considerado um subdomínio principal internamente. 
+
+"o domínio vive em torno do contexto"
+
+-Subdomínio genérico - é o conjunto de processos que são comuns no mercado
+
+lógica complexa
+
+por exemplo: muito embora uma escola tenha como domínio a educação para que ela exista é necessário que exista uma parte financeira. Não é o core do negócio mas é necessário para que ele funcione.
+
+-Subdomínio de suporte - apoia o negócio da empresa, não da nenhuma vantagem estratégica para o negócio e sim complementa o que o subdomínio principal faz. Normalmente  são  facilmente  identificáveis  por  sua lógica simples, em geral são sistemas de operações básicas, os mais do que famosos CRUD (Create, Read, Update e Delete).
+
+Exemplos: 
+	•Um Subdomínio de Suporte da nossa Escola é a gestão de dados de pais e alunos.
+	•Um Subdomínio de Suporte da Netflix é o cadastro de filmes e séries.
+	•Um Subdomínio de Suporte da Azul é o cadastro de pessoas no seu portal.
+	•Um  Subdomínio  de  Suporte  da  DHL  é  a  integração  com  outros  sistemas logísticos
+
+**marketing também é suporte
+
+Para cada domínio, subdomínio existem diversos Domain Experts que é a pessoa que conhece do negócio (domínio ou subdomínio) capaz de descrever todos os processos e procedimentos por trás do que estamos implementando, é quem conta a história.
+
+Os Domain Experts são uma ou algumas pessoas mais experientes dos departamentos envolvidos que conhcem os processos da área, os detalhes e como cada "passo" influencia no processo como um todo.
+
+Cada subdomínio tem um tipo de linguagem devemos tomar cuidado em não criar 2 vezes a mesma coisa só por que em dominios diferentes tem nomes diferentes
+
+
+*ESTUDO DE CASO - escola mais humanizada, preza em moldar o ser humano ao invés de focar somente no conteúdo*
+
+subdominio principal: 
+-personalização de planos de ensino e acompanhamento
+-sugestão de plano de ação com base no perfil do aluno
+-compartilhamento de informações e alertas aos envolvidos com o aluno
+-solução muliplataforma, maximizando a experiência do usuário (app/web)
+
+subdominios genericos:
+-autenticação e permissionamento para controle de acesso dos usuárioos
+-funções administrativas tais como contabilidade, fiscal, rh e afins
+-Criptografia de dados
+
+subdominios de suporte:
+-Gestão de dados pessoais e escolares do aluno
+-gestão de dados de familiares e relacionamentos com os alnos
+-integração com sistemas externos testes padronizados (envio e recebimento de informações dos alunos)
+-integração com os sistemas Administrativos (sistema geração de contas, pagamentos e afins)
+
+Como documentar isso?
+Próximas aulas
