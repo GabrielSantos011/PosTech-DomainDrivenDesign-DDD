@@ -1,0 +1,45 @@
+Domain Storytelling - Narrativa de domínio
+
+O Domain Driven Design utiliza histórias para entendermos melhor sobre o negócio, a jornada do cliente, entre outros. Por isso, vamos entrar nos conceitos Domain Storytelling, uma ferramenta que nos ajuda muito nesta parte do DDD.
+
+É uma técnica, método que utilizamos para entender melhor nossos domínios e subdomínios, trazendo pessoas com vários níveis de conhecimento para compartilhar suas visões em  um documento de maneira visual para demonstrar a história que o Domain Expert contou.
+
+Contar histórias nos ajuda a:
+- Entender o domínio
+- Estabelecer uma linguagem entre os Domain Experts e os IT Experts
+- Evitar mal entendidos
+- Esclarecer requisitos de software
+- Implementar o software corretamente
+- Estruturar o software
+- Desenhar processos de negócio, suportados por software, que sejam viáveis
+
+Utiliza Linguagem Pictográfica -  De forma a criarmos uma narrativa de domínio, que seja coesa e legível, precisamos não apenas dos símbolos de objetos e conceitos, mas também dos símbolos de conexão/relação entre eles, e textos que possam nos explicar o que é necessário sobre essa relação, ou uma anotação no objeto. Um Pictograma é um símbolo que representa algo, seja um conceito ou objeto.
+
+Os objetos são:
+- Atores: alguem que executa algo (professor, aluno)
+- Objetos de trabalho: utilizados pelos atores (aula)
+- Atividades: ações dos atores com o objeto de trabalho (dar aula, assistir aula)
+- Números Sequênciais: indicam o fluxo (primeiro o professor da a aula para que o aluno assista) - em caso de execução paralela números iguais
+- Anotações: informações importantes
+- Grupos: representações de parte da história
+- Cores: trazer ênfase
+
+para fazer na prática: egon.io/app/
+
+exemplos: 
+02-Domain Storytelling-exemplo1.dst
+02-Domain Storytelling-exemplo2.dst
+
+No segundo exemplo vemos que o plano de desenvolvimento existe para avaliar o aluno e é uma parte integrante do professor e ta relacionado ao professor, aluno e atividade. Com essa história conseguimos coletar vários pontos importantes para desenvolver o sistema, identificando varias interações entre os itens e os atores.
+
+Como organizar esses documentos? um único documento gigantesco contendo tudo? Não, com vários documentos. Exemplo: um doc para como eu crio o plano de desenvolvimento e como utilizo, outro para atividade (trabalho), entre outros...
+Criamos novos documentos e podemos fazer referência de outros documentos.
+
+Nas histórias definimos um fluxo, não existem if-else, cada condicional será tratada como uma nova história
+
+Dessa forma começamos a entender certinho "o que" acontece, "como" acontece, "quando acontece", para desenvolvermos a lógica de negócio. 
+
+Porém é necessário ficar atento com o escopo. Claro que mesmo sendo algo definido temos variações mas precisamos delimitar até onde iremos chegar. Se as histórias que estamos ouvindo são praticadas (as is) ou se é um desejo futuro (to be).não é o momento de entrarmos em mínimos detalhes, podemos focr a nivel de entendimento das atividades. No desenrolar do desenvolvimento podemos nos aprofundar utilizando metodologias ágeis por exemplo.
+
+Qual seria a equipe necessária?
+Domain Experts (quantos forem necessários), Ouvintes (todos que estão dispostos a aprender, normalmente o time dev e alguns agregados), Moderador (que conduz a conversa) e o Modelador (que cria a história em linguagem pictográfica e faz as devidas anotações)
