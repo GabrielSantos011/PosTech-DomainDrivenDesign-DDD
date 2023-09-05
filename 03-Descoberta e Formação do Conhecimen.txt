@@ -1,0 +1,44 @@
+Descoberta e Formação do Conhecimento
+
+Seguindo com o desafio de construir um sistema para uma escola (exemplo das aulas anteriores), já foi mostrado Domínio, Subdomínio, Domain Experts e uma das técnicas para mapear as histórias (Domain Storytelling), mas como entender e combinar tudo isso?
+
+Em uma escola existem várias áreas de “negócios”, cada uma com suas particularidades e dialetos próprios. E, como falamos anteriormente, DDD é sobre entender o que é a demanda do negócio, aprender o que agrega valor.
+
+Quando falamos sobre o desafio do negócio, estamos endereçando o que o negócio faz, quais são os seus processos e quais os desafios conhecidos. O ponto não é somente elencarmos o óbvio, há muito mais que isso, pois em momento algum temos a percepção real do nosso Domain Expert, só o desenho do que acontece hoje (lembram do desejo vs realidade?). 
+Então, vamos nos aprofundar um pouco mais, pois em uma conversa com o Domain Expert temos uma visão dos problemas enfrentados pelo negócio. Porém, somente seremos capazes de desenhar esse modelo com uma comunicação clara, e isso é uma via de mão dupla: o Domain Expert tem que falar algo que os desenvolvedores possam entender e vice e versa. 
+Para isso utilizamos a linguagem ubíqua/onipresente
+
+A linguagem Ubíqua: Linguagem Ubíqua (ou Linguagem Onipresente) é um conceito central de DDD. Ela consiste de um conjunto de termos que devem ser plenamente entendidos tanto por especialistas no domínio (usuários do sistema) como por desenvolvedores (implementadores do sistema).
+
+Durante a descrição do cenário, o Domain Expert começa a usar termos como próprios do negócio, como testes, notas, sistema, e muitos outros que achamos que entendemos (linguagem do negócio, do dia-a-dia). Porém é comum acontecer que situações iguais sejam nomeadas de maneira diferente por áreas distintas, por exemplo: os pais de uma criança que ainda estejam em processo de escolher uma escola são vistos de forma diferente pelos departamentos da mesma escola, tais como: admissão (prospectos), marketing (leads) e secretaria (responsável). Por isso, é de extrema importância que tenhamos os termos claros para cada cenário e subdomínio. Dessa forma, tanto o negócio quanto o time de desenvolvimento “falam a mesma língua” e, posteriormente, esses termos podem e serão utilizados no desenho do sistema.  
+
+É importante notar que a linguagem ubíqua deve ser consistente e detalhada, facilitando assim a comunicação e o entendimento, e vale ressaltar dois pontos que podem ocorrer no processo de mapeamento: 
+-Termos Ambíguos: dentro de um subdomínio, podemos ter um mesmo termo com vários significados. Por exemplo: política. Esse termo pode significar uma lei regulatória ou uma regra interna da escola. Como em linguagem ubíqua precisamos de uma definição para cada termo, aqui podemos definir que o termo política será utilizado para os dois significados. 
+-Termos Sinônimos: dentro de um subdomínio, podemos ter um termo que é utilizado para vários significados que possuem muito mais detalhes. Por exemplo, em TI utilizamos sempre o termo login para referenciar o ato de efetuar autenticação no sistema, ou para referenciar a conta do usuário. É importante notar que são coisas totalmente diferentes que alocamos o mesmo nome por conveniência. Em linguagem ubíqua, sempre que possível, temos que quebrar esses termos e lhes dar definições únicas e específicas para evitar problemas futuros.
+
+Modelagem do Domínio:
+Ao criar um modelo do Domínio, estamos desenhando uma abstração de um processo do qual queremos resolver um problema, é essencial para entender o processo que vamos implementar, nessa fase que definimos o fluxo de informações, nossos objetos, atores, ações, regras de negócio e mais.
+Essa documentação é essencial para que possamos conduzir as conversas com os Domain Experts e extrair tudo que é necessário para entender o problema. A linguagem ubíqua que vimos anteriormente é um passo muito importante no alinhamento da comunicação entre as partes. 
+É importante ressaltar que, na medida em que avançamos no desenho do modelo, também teremos refinamentos. O que discutimos anteriormente ao falar da Realidade vs Desejo, será aplicado ao iterarmos sobre o modelo, como o foco no que é importante, termos uma linguagem única (ubíqua) vai nos ajudar a criar um modelo mais efetivo e a criar uma solução que reflete o que foi dito. 
+Existem diversas ferramentas que podem ser utilizadas para catalogar os modelos e para manter um dicionário de linguagem ubíqua. Podemos citar aqui as Wikis, ferramentas de colaboração como o Notion.io e outras mais. Independente da ferramenta, é importante manter tudo atualizado na medida em que as interações acontecem.
+
+Ferramentas: 
+Como vimos até aqui, é muito importante que tenhamos controle de tudo que estamos fazendo, ou seja, que cataloguemos tudo, de forma que posteriormente possamos compartilhar e manter tudo atualizado na medida em que seguimos em frente. Não há uma “fórmula mágica” de como fazer isso, mas precisamos montar uma estrutura que nos dê suporte e seja fácil de se trabalhar, e isso significa pensar em todos os envolvidos no processo de desenvolvimento. 
+Um bom exemplo é montarmos uma Wiki que consolida os diversos recursos, tais como os listados abaixo: 
+-Wiki para ser a central do projeto, consolidando todos os recursos. 
+-Seção na Wiki com o a descrição do projeto. Seção na Wiki com o time do projeto (se tivermos mais de um time). Devemos então criar diversas subpáginas para contemplar cada parte do projeto. Em outras palavras, uma página para cada subdomínio. 
+-Seção na Wiki para a linguagem ubíqua (esse é o nosso “Dicionário”). 
+-Seção na Wiki para os cenários que criamos, suas premissas e limitações. 
+-Link para um repositório do GitHub, com os códigos do projeto e sua documentação. 
+-Link para a Ferramenta de Gestão do Projeto. 
+É uma estrutura simples, mas que fará toda a diferença no andamento do projeto.
+
+
+Contextos Delimitados:
+Até aqui falamos de entender o negócio trabalhando em conjunto com o Domain Expert para que possamos desenhar a solução a ser implementada, que é baseada em processos de negócio. Identificamos o domínio e seus subdomínios, como cada um “participa” do negócio e qual a sua parte na estratégia da empresa. Pois bem, agora começamos a criar limites para a nossa solução, limites que não são definidos pelos subdomínios. Esses limites existem dentro de contextos que identificamos ao analisar o negócio, são o que chamamos de Contextos Delimitados (Bounded Contexts). 
+Temos alguns pontos importantes:
+-Não há uma regra para definir o tamanho de um contexto delimitado, tudo depende da análise do arquiteto. Como falamos anteriormente, a linguagem ubíqua é uma ótima métrica, se a terminologia é a mesma em dois contextos e tratam os processos de negócio de formas muito parecidas, pode ser uma boa ideia juntar as duas no mesmo contexto, ou até mesmo o contrário; se forem muito distintos, separe-os para que possam ser implementados sem interferência.
+-A quantidade de recursos não é fixa, depende do tipo de projeto que você tem. O tamanho de um contexto pode dizer muito sobre isso, mas não é porque um contexto é grande demais que você precisa de um time imenso. Muitas coisas podem ser dependentes de outras e não adianta abrir um paralelo no desenvolvimento, pois não acelerará nada.
+-O número de contextos pode mostrar o número de times que farão parte da equipe de desenvolvimento, mas como vimos acima, podemos refinar sucessivamente nosso modelo e ir integrando cada vez mais nossos contextos, diminuindo assim a quantidade.
+-Podem existir casos de contextos delimitados que englobem a solução inteira, se a solução for muito pequena isso é possível, assim como podemos ter contextos delimitados em que não haverá agrupamento de contextos e será 1 para 1, no caso de sistemas muito grandes e complexos.
+-Um contexto delimitado é trabalhado apenas por um time, nunca compartilhado, porém um time pode trabalhar em mais de um contexto
