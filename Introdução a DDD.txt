@@ -43,6 +43,8 @@ lógica complexa
 
 por exemplo: muito embora uma escola tenha como domínio a educação para que ela exista é necessário que exista uma parte financeira. Não é o core do negócio mas é necessário para que ele funcione.
 
+pode ser tercerizado.
+
 -Subdomínio de suporte - apoia o negócio da empresa, não da nenhuma vantagem estratégica para o negócio e sim complementa o que o subdomínio principal faz. Normalmente  são  facilmente  identificáveis  por  sua lógica simples, em geral são sistemas de operações básicas, os mais do que famosos CRUD (Create, Read, Update e Delete).
 
 Exemplos: 
