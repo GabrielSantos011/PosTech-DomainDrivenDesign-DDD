@@ -1,0 +1,44 @@
+Trabalhando com contextos delimitados
+
+Cada contexto delimitado será feito por um time ao mesmo tempo, e isso requer disciplina de comunicação e entendimento do que está sendo feito, pois a integração é parte chave de todo o processo de negócios. Agora trabalharemos com os padrões de desenho do DDD, que definem as integrações e como os contextos se integram.
+
+Cooperação 
+Ao trabalhar com contextos delimitados, temos casos em que a comunicação é clara e objetiva entre os times e não existe precedência de um contexto a outro, tendo assim colaboração total entre os times.
+ 
+O primeiro modelo de desenho que temos é o de parceria, onde a comunicação flui constantemente e os times se notificam sobre mudanças que estão ocorrendo, dando tempo e documentação ao outro time de forma que adapte seu contexto para se manter conectado, e isso pode ser a forma de integração, a linguagem sendo utilizada (não a de programação, mas sim a que utiliza para conectar os contextos), tempo de resposta das adequações e muito mais.
+Alguns pontos importantes que podemos notar nesse modelo é que a comunicação é muito frequente e mudanças serão normais, principalmente nos primeiros momentos do desenvolvimento enquanto se discute sobre a melhor solução.
+exemplo na foto 04-contexto delimitado-parceria.
+
+Outro caso de colaboração que teremos é o de Kernel compartilhado, ou seja, temos uma parte do modelo que é comum a todos os contextos envolvidos e deve seguir as definições de todos para que funcione. Em nosso modelo temos um caso deste, ao verificar que os dois contextos que estamos trabalhando têm em comum o CRM e os Relatórios, como na foto 04-contexto delimitado-kernel compartilhado.
+Esse é um caso em que a comunicação deve ser essencial, pois, teoricamente, viola todo o princípio dos contextos delimitados. Aqui as duas soluções serão utilizadas além dos limites propostos de seus contextos. Temos mais de um time trabalhando nas soluções e temos demandas distintas ocorrendo na mesma solução. O grande desafio aqui é que qualquer mudança na solução afeta todos os contextos envolvidos. Sendo assim, qualquer mudança deverá ser testada para todos os cenários em todos os contextos. A implementação de um Kernel compartilhado é desafiadora, pois envolve compartilhar o mesmo código com todos os times envolvidos. Por isso, esse tipo de modelo é desencorajado, mas, se for realmente necessário, deve ser analisado e coordenado com muita atenção, evitando assim perda de dados ou problemas de execução.
+Há casos em que o uso de Kernel compartilhado é inevitável, como por exemplo em sistemas legados, que não foram construídos de forma a separar seus contextos (já escuto vozes gritando MONOLITOS!), e o uso de compartilhamento de Kernel é essencial enquanto se moderniza a solução.
+
+Passamos agora para o segundo modelo de desenho que podemos encontrar, o de Cliente-Fornecedor, sendo: 
+-Fornecedor (Upstream): provê um serviço. 
+-Cliente (Downstream): consome um serviço. 
+Esse modelo ocorre quando os times que desenvolvem os contextos podem desenvolvê-los separadamente, porém há alguma dependência por conta de um serviço, nesse caso, temos uma situação em que os times podem não se entender quanto à integração, tal como vimos no modelo de parceria, e agora os times têm poder de decidir como querem se integrar. Vamos ao nosso cenário, como você pode visualizar na foto 04-contexto delimitado-cliete fornecedor.
+Como vemos na foto temos 3 contextos, cada um com seu time de desenvolvimento, e já desenhamos o fluxo de serviços, ou seja, quem provê e quem consome.
+
+-Conformista:
+Vamos ao nosso caso: escolhemos utilizar um serviço terceiro que trabalha com OAuth 2.0, uma vez que já utilizamos serviços desse provedor, porém precisamos criar nossa camada de gestão de identidade e acesso, para controlar quem acessa o que em nosso ambiente. Como o serviço de autenticação pertence a um fornecedor externo, e ele provê serviços a vários clientes globalmente, não temos como negociar para que ele se adeque às nossas necessidades. Sendo assim, quem “manda” na relação é o fornecedor, ou seja, temos que nos conformar em trabalhar com o padrão que nos é dado, e adequar nossa solução para utilizar esse padrão, tal como na foto 04-contexto delimitado-cliete fornecedor-conformista.
+Quando o padrão de serviço é determinado pelo fornecedor e este não renuncia a seu protocolo, ou seja, ignora as demandas do cliente, este tem que “se conformar” e se adequar ao que o fornecedor o provê. Esse é o modelo conformista.
+
+Contudo podemos criar uma Camada Anticorrupção (ACL - Anti-Corruption Layer), trata-se de uma camada de abstração, nos exemplos citados em aula me fez lembrar muito de DTO, ou seja, utilizar somente o necessário. Com essa camada podemos minimizar as correções para uma eventual mudança do fornecedor, sendo necessário atuação em apenas um lugar.
+Quando utilizar ACL:
+1. Quando o contexto Cliente contém um subdomínio principal. Isso evita que se corrompa ou interfira na implementação da solução principal, isolando os códigos. 
+2. Quando o modelo do fornecedor é ineficiente ou não serve totalmente ao cliente. Nesse caso, criamos a ACL para filtrar somente o que é necessário. Essa solução é muito usada em caso de integração com legados.
+3. Quando o Fornecedor muda constantemente seu protocolo, o que aumenta a complexidade da solução. Tendo uma ACL, a manutenção fica apenas nesse código.
+
+Existe também o Serviço de Host Aberto (OHS - Open-Host Service), nos casos anteriores falamos sempre de situações em que o fornecedor tem o controle da solução e “força” o cliente a se adaptar à sua realidade, mas e quando o cliente tem a preferência na integração? Agora o fornecedor, provê uma camada de integração onde este expõe seus serviços para que o cliente não precise se adequar, mas sim utilizar algo padronizado que não muda com o tempo. Isso ajuda o fornecedor a separar seus desenvolvimentos internos do que é publicado aos clientes, e permite a estes que se conectem usando um protocolo que não muda e está aberto.
+
+Ainda temos a Linguagem Publicada (PL - Published Language) onde o fornecedor (ou serviço terceiro) cria ums camada de abstração segundo o negócio do fornecedor e do cliente, fazendo assim algo personalizado.
+
+Existe um outro modelo que é o de times simplesmente não se integrarem (caminos separados). Isso se dá quando os times não têm possiblidade de comunicação, o custo de integração é muito maior que o de criar uma solução interna, e não tem sentido em expor o serviço a outros contextos.
+
+Ainda há outro modelo, o Grande Bola (Big Ball of Mud) de Lama Vaughn Vernon (2013). Um modelo que é encontrado em sistemas muito grandes, em que os contextos não são bem limitados e são inconsistentes. Nesse caso específico, as recomendações são: 
+-Desenhe uma linha de limite em torno e chame de Grande Bola de Lama. 
+-Não tente aplicar nenhum método sofisticado de modelagem. 
+-Cuidado, pois essa Bola de Lama pode contaminar outros contextos.
+
+
+Agora que criamos as integrações considerando todos os modelos, podemos finalmente desenhar o nosso mapa de contexto, que é a materialização visual dos nossos contextos delimitados e como estes se integram. Com isso, temos uma visão estratégica do todo. O Mapa de contexto não é algo estático, é um documento vivo, que deve ser atualizado constantemente. Afinal, como falamos anteriormente, é o mapa que reflete como os contextos são integrados e garantem que os subdomínios façam sentido.
