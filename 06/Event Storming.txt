@@ -1,0 +1,44 @@
+Event Storming
+
+A Tempestade de eventos, ou event storming, é uma atividade lúdica, onde um grupo diverso de pessoas se reúne e modela o processo de negócio. Bem parecido com o que vimos em domain storytelling, aqui também compartilharemos o conhecimento do negócio. Utilizaremos recursos simples para efetivamente desenhar nosso processo de negócio, cartões coloridos (funcionam muito bem!), cada um representando um elemento da história que vamos contar e como o processo de negócio funciona.
+
+para começar, precisamos de pessoas. Mas quem?! Tal como em Domain Storytelling, vamos precisar selecionar as “pessoas certas” para integrarem o time, pessoas que tem relação com domínio e que vão contribuir com a história.
+Uma sugestão de time é a seguinte: 
+-Domain experts: quantos forem necessários para contar a história. 
+-Ouvintes: todos que estão dispostos a aprender sobre a história (normalmente o time de desenvolvimento e mais alguns agregados). 
+-Facilitador: que vai conduzir as conversas, criando as lógicas de perguntas e mantendo o assunto alinhado com o que se quer atingir.
+
+E quanto ao material, podemos utilizar o método tradicional, de colar papéis coloridos nas paredes. Também precisaremos de canetas coloridas, uma sala espaçosa. Além disso, podemos trocar o método tradicional e utilizar softwares de modelagem, tal como o Miro ou o FigJam.
+
+começamos:
+
+1-Brainstorming 
+Tudo se inicia com uma sessão de brainstorm, onde serão relatados os eventos do domínio sendo estudado. Um evento de domínio é algo que ocorreu no domínio uma ação, esses eventos serão identificados em nossa história como os “post-its laranjas”. Nesta fase o time vai criar todos os eventos que puder. Utilizar os verbos sempre no passado, não há tempo delimitado, conforme as ideias forem se esgotando podemos seguir em frente (caso surja uma nova ideia podemos incrementar sem problema nas próximas fases)
+
+2-Linhas do Tempo 
+Agora que temos um quadro cheio de eventos! Já podemos começar a organizar, e para tanto, vamos criar uma linha do tempo. Essa linha do tempo é um desenho do “caminho ideal”, ou seja, quando tudo segue o caminho que deveria. Porém, exceções acontecem e devem ser tratadas. Agora é a hora em que vamos adicionar essas alternativas, esses outros cenários, e também podemos eliminar duplicidades do passo anterior, eventos desnecessários, corrigir algo que não foi bem expressado ou até mesmo adicionar novos eventos que foram esquecidos.
+
+3-Pontos de Atenção 
+Assim que tivermos uma visão do processo de negócio, podemos começar a criticá-lo, ou seja, verificar onde estão nossos pontos de atenção, nossas dúvidas sobre cada passo, como são feitos, o que é feito, se necessitam de mais documentos ou se temos um gargalo. Estes pontos de atenção são representados por papéis cor de rosa, (viramos os papeis para que fiquem em forma de losango, e que assim se diferenciem mais). É importante ressaltar que, nesse passo, os participantes vão contribuir com tudo que têm de opiniões sobre o processo, qualquer problema, preocupação ou dúvida deve virar um ponto de atenção, pois pode ser um ponto de melhoria adiante
+
+4-Eventos Pivotais 
+Ao longo da nossa linha do tempo, notamos que há eventos que indicam uma troca de fase, ou uma mudança de contexto... estes eventos são o que chamamos de eventos pivotais. Eles mudam como vamos operar e são marcados por meio de linhas verticais em nossa linha do tempo. Um ponto que é necessário destacar: eventos pivotais são ótimos delimitadores para contextos delimitados
+
+5-Comandos 
+Até agora, nossa linha do tempo demonstra os eventos e as nossas preocupações sobre os eventos. Porém, os eventos foram criados por alguma ação que foi tomada por um ator. Essas ações são denominadas “Comandos” e são escritas no imperativo.
+Os atores aparecem ao lado dos comandos, mas é importante ressaltar que nem todos os comandos têm atores, pois alguns Os comandos são inseridos em nossa linha do tempo, utilizando papéis azuis, e os atores são um pequeno papel amarelo, com uma tonalidade diferente da que usamos anteriormente
+
+6-Políticas 
+Alguns comandos não são realizados por atores, e sim por automações do sistema. Nesses casos, são regras de negócios ou políticas do negócio, que são utilizadas para disparar um comando e gerar um evento. As políticas estão conectadas a eventos que as ativam, e a partir daí o comando é gerado. Políticas são representadas em nosso modelo com o papel roxo claro. Um ponto importante para se consider
+
+7-Modelos de Leitura (interface) 
+Modelos de leitura são uma visão de dados, que podem ser relatórios, telas, e-mails, notificações etc., que os atores utilizam para tomar uma decisão antes de executar um comando. Papeis verde claros são utilizados para indicar os modelos de leitura, e sempre precedem um comando, pois são utilizados para que o ator os consulte antes de executar algo. Eles são posicionados antes do comando.
+
+8-Sistemas Externos 
+Em diversos casos, temos ações e eventos que podem vir ou ir para sistemas externos ao que estamos desenvolvendo. Sistemas externos estão além do domínio que estamos explorando. Em event storming, são representados por papéis rosa.
+
+9-Agregados 
+Apesar de já termos uma visão “completa”, precisamos dar alguns passos a mais, pois agora temos que organizar nossos comandos, e os eventos que produzem em agregados. Fazemos isso identificando quem é o objeto principal de cada passo que temos. Por exemplo, vários comandos se referem à atividade, outros às notas e afins. Isso já nos traz um indicativo de como vamos agregar nossos elementos.
+
+10-Contextos Delimitados 
+Por fim, vamos combinar os agregados, que tem conexão forte entre si, sejam por políticas, ou eventos relacionados.
